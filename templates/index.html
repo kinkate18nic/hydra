@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTO/RPO Calculator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>RTO and RPO Calculator</h1>
+    <form id="calcForm" method="POST" action="/">
+        <label>VM Name: <input type="text" name="vm_name" required></label><br>
+        <label>Backup Frequency (minutes): <input type="number" name="backup_frequency" required></label><br>
+        <label>Data Size (GB): <input type="number" name="data_size" required></label><br>
+        <label>Bandwidth (Mbps): <input type="number" name="bandwidth" required></label><br>
+        <button type="submit">Calculate</button>
+    </form>
+    <div id="results">
+        {% if rpo is not none and rto is not none %}
+            <p>RPO: {{ rpo }} minutes</p>
+            <p>RTO: {{ rto }} hours</p>
+        {% endif %}
+    </div>
+</body>
+</html>
